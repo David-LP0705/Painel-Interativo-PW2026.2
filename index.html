@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Interativo PW2026.2</title>
+</head>
+<body>
+    <div id="pagina" style="padding: 20px;">
+        <h1>Painel Interativo - ProgWeb 2026.2</h1>
+        <p id="mensagem">Aguardando...</p>
+        
+        <input type="text" id="campoNome" placeholder="Digite seu nome">
+        <button onclick="saudar()">Enviar</button>
+        <button onclick="alternarTema()">Alternar tema</button>
+        
+        <p>Botão clicado <span id="contador">0</span> vez(es).</p>
+    </div>
+
+    <script>
+        let paragrafo = document.getElementById("mensagem");
+        paragrafo.textContent = "A página carregou e o JavaScript está funcionando!";
+
+        let cliques = 0;
+
+        let temaEscuro = false;
+
+        function saudar() {
+            let nome = document.getElementById("campoNome").value;
+            let saida = document.getElementById("mensagem");
+
+            if (nome === "") {
+                saida.textContent = "Por favor, digite seu nome.";
+            } else {
+                saida.textContent = "Olá, " + nome + "! Seja bem-vindo(a)!";
+            }
+
+            cliques = cliques + 1;
+            document.getElementById("contador").textContent = cliques;
+        }
+
+        function alternarTema() {
+            let pagina = document.getElementById("pagina");
+
+            if (temaEscuro === false) {
+                pagina.style.backgroundColor = "#222222";
+                pagina.style.color = "#ffffff";
+                temaEscuro = true;
+            } else {
+                pagina.style.backgroundColor = "#ffffff";
+                pagina.style.color = "#000000";
+                temaEscuro = false;
+            }
+        }
+    </script>
+</body>
+</html>
